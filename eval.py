@@ -19,6 +19,7 @@ def eval(weights_path, image_path='samples.png', samples=64, x_shape=[None, 64, 
     tl.visualize.save_images(G(z).numpy(), [num_tiles, num_tiles], image_path)
     
 def evalencoder(weights_path, image_path='samples.png', samples=64, x_shape=[None, 64, 64, 3], z_shape=[None, 128]):
+    z_real=[]
     num_tiles = int(math.ceil(math.sqrt(samples)))
     images, images_path = get_celebA(flags.output_size, flags.batch_size)
     E=get_encoder(x_shape, z_shape)
@@ -26,7 +27,7 @@ def evalencoder(weights_path, image_path='samples.png', samples=64, x_shape=[Non
     E.eval()
     for step, batch_images in enumerate(images):
         x_real = batch_images
-        z_real = E(x_real).numpy()
+        z_real.append(E(x_real).numpy())
         #tl.visualize.save_images(E(x_real).numpy(), image_path)
         print(z_real)
 
