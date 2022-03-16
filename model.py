@@ -25,7 +25,7 @@ def get_encoder(x_shape, z_shape, ef_dim=64):
     nn = Dense(n_units=np.prod(z_shape[1:]), act=tf.identity, W_init=w_init)(nn)
     nn = Reshape([i if i else -1 for i in z_shape])(nn)
 
-    return tl.models.Model(inputs=ni, outputs=nn, name='encoder')
+    return tl.models.Model(inputs=ni, outputs=nn)
 
 
 def get_generator(x_shape, z_shape, gf_dim=64):
