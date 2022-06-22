@@ -4,7 +4,7 @@ import tensorflow as tf
 import tensorlayer as tl
 
 
-DATA_PATH = "TensorLayer-BiGAN/data"
+DATA_PATH = "drive/MyDrive/data1"
 
 
 def get_celebA(output_size, batch_size):
